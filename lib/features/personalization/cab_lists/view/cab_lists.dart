@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rodbez_yard/features/personalization/cab_details/view/cab_details.dart';
 import 'package:rodbez_yard/features/personalization/cab_lists/controller/cab_list_controller.dart';
 import 'package:rodbez_yard/features/personalization/cab_lists/view/widgets/cab_list_card.dart';
 import 'package:rodbez_yard/utils/constants/colors.dart';
@@ -119,7 +120,7 @@ class CabLists extends StatelessWidget {
                       vehicleStatus: cab.vehicleStatus,
                       driverName: cab.driverName,
                       updatedAt: cab.updatedAt,
-                      onTap: () => debugPrint("Tapped ${cab.cabNumber}"),
+                      onTap: () => Get.to(()=> CabDetails()),
                       onTapChangeDriver: () =>
                           debugPrint("Change Driver for ${cab.cabNumber}"),
                       onTapViewMap: () =>

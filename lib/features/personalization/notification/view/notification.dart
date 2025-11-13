@@ -15,9 +15,7 @@ class NotificationScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Text(
           "Notification",
-          style: Theme.of(
-            context,
-          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       body: SafeArea(

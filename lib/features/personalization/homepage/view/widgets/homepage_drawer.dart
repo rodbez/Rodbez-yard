@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rodbez_yard/features/personalization/cab_lists/view/cab_lists.dart';
 import 'package:rodbez_yard/features/personalization/help_support/view/help_support.dart';
+import 'package:rodbez_yard/features/personalization/leaderboard/view/leaderboard.dart';
+import 'package:rodbez_yard/features/personalization/notification/view/notification.dart';
+import 'package:rodbez_yard/features/personalization/profile/view/profile.dart';
 import 'package:rodbez_yard/utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../driver_lists/view/driver_list.dart';
 import 'drawer/drawer_tile.dart';
 import 'package:get/get.dart';
 
@@ -62,9 +67,7 @@ class HomepageDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
+                    onTap: () =>Get.to(() => Profile()),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -105,18 +108,150 @@ class HomepageDrawer extends StatelessWidget {
                   DrawerTile(
                     icon: Icons.star,
                     title: "Ratings",
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
+                    onTap: () => Get.to(() => Profile()),
                   ),
                 ],
               ),
             ),
           ),
-          DrawerTile(
-            icon: Icons.help,
-            title: "Help",
-            onTap: () => Get.to(HelpSupport()),
+
+          Padding(
+            padding: const EdgeInsets.only(
+              left: RSizes.smallSpace,
+              right: RSizes.smallSpace,
+              top: RSizes.xxSm,
+            ),
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: RSizes.sm,
+                right: RSizes.sm,
+                top: RSizes.sm,
+              ),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                    spreadRadius: 1,
+                  ),
+                ],
+                border: Border.all(width: 1, color: RColors.grey),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(RSizes.borderRadiusLg),
+                ),
+                color: RColors.white,
+              ),
+              child: Column(
+                children: [
+                  DrawerTile(
+                    icon: Icons.local_taxi_rounded,
+                    title: "Current Vehicles",
+                    onTap: () => Get.to(() => CabLists()),
+                  ),
+                  Divider(),
+                  DrawerTile(
+                    icon: Icons.leaderboard_rounded,
+                    title: "Leaderboard",
+                    onTap: () => Get.to(() => Leaderboard()),
+                  ),
+                  Divider(),
+                  DrawerTile(
+                    icon: Icons.group_rounded,
+                    title: "Manage Drivers",
+                    onTap: () => Get.to(() => DriverList()),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(RSizes.smallSpace),
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: RSizes.sm,
+                right: RSizes.sm,
+                top: RSizes.sm,
+              ),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                    spreadRadius: 1,
+                  ),
+                ],
+                border: Border.all(width: 1, color: RColors.grey),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(RSizes.borderRadiusLg),
+                ),
+                color: RColors.white,
+              ),
+              child: Column(
+                children: [
+                  DrawerTile(
+                    icon: Icons.notifications_rounded,
+                    title: "Notifications",
+                    onTap: () => Get.to(NotificationScreen()),
+                  ),
+                  Divider(),
+                  DrawerTile(
+                    icon: Icons.help_outline_rounded,
+                    title: "Help",
+                    onTap: () => Get.to(HelpSupport()),
+                  ),
+                  Divider(),
+                  DrawerTile(
+                    icon: Icons.settings_rounded,
+                    title: "Settings",
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(
+              left: RSizes.smallSpace,
+              right: RSizes.smallSpace,
+              top: RSizes.xxSm,
+              bottom: RSizes.smallSpace
+            ),
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: RSizes.sm,
+                right: RSizes.sm,
+                top: RSizes.sm,
+              ),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                    spreadRadius: 1,
+                  ),
+                ],
+                border: Border.all(width: 1, color: RColors.grey),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(RSizes.borderRadiusLg),
+                ),
+                color: RColors.white,
+              ),
+              child: Column(
+                children: [
+                  DrawerTile(
+                    icon: Icons.logout_rounded,
+                    title: "Logout",
+                    iconColor: RColors.error,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

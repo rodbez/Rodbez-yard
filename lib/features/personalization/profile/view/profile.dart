@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rodbez_yard/features/personalization/attendance/view/attendance.dart';
+import 'package:rodbez_yard/features/personalization/cab_lists/view/cab_lists.dart';
 import 'package:rodbez_yard/features/personalization/driver_lists/view/driver_list.dart';
+import 'package:rodbez_yard/features/personalization/leaderboard/view/leaderboard.dart';
+import 'package:rodbez_yard/features/personalization/notification/view/notification.dart';
 import 'package:rodbez_yard/utils/constants/colors.dart';
 import 'package:rodbez_yard/utils/constants/image_strings.dart';
 import 'package:rodbez_yard/utils/constants/sizes.dart';
 import 'package:get/get.dart';
+
+import '../../help_support/view/help_support.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -16,7 +22,6 @@ class Profile extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               Stack(
                 children: [
                   Container(
@@ -31,11 +36,7 @@ class Profile extends StatelessWidget {
                       "Profile",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
@@ -68,20 +69,14 @@ class Profile extends StatelessWidget {
                                 "Kumar, Abhi",
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .titleMedium
+                                style: Theme.of(context).textTheme.titleMedium
                                     ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 "+91 12345 67890",
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
                           ),
@@ -116,29 +111,39 @@ class Profile extends StatelessWidget {
                     _buildMenuItem(
                       icon: Icons.local_taxi_rounded,
                       text: "Current Vehicles",
-                      onTap: () {},
+                      onTap: () => Get.to(() => CabLists()),
                     ),
                     _buildMenuItem(
                       icon: Icons.history_rounded,
                       text: "Vehicle History",
-                      onTap: () {},
+                      onTap: () => Get.to(() => CabLists()),
                     ),
                     _buildMenuItem(
-                        icon: Icons.group_rounded,
-                        text: "Manage Drivers",
-                        onTap: () {
-                          Get.to(() => DriverList());
-                        }
+                      icon: Icons.leaderboard_rounded,
+                      text: 'Leaderboard',
+                      onTap: () => Get.to(() => Leaderboard()),
+                    ),
+                    _buildMenuItem(
+                      icon: Icons.access_time_rounded,
+                      text: 'Attendance',
+                      onTap: () => Get.to(() => Attendance()),
+                    ),
+                    _buildMenuItem(
+                      icon: Icons.group_rounded,
+                      text: "Manage Drivers",
+                      onTap: () {
+                        Get.to(() => DriverList());
+                      },
                     ),
                     _buildMenuItem(
                       icon: Icons.notifications_rounded,
                       text: "Notifications",
-                      onTap: () {},
+                      onTap: () => Get.to(() => NotificationScreen()),
                     ),
                     _buildMenuItem(
                       icon: Icons.help_outline_rounded,
                       text: "Help & Support",
-                      onTap: () {},
+                      onTap: () => Get.to(HelpSupport()),
                     ),
                     _buildMenuItem(
                       icon: Icons.settings_rounded,
@@ -178,10 +183,7 @@ class Profile extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.black54,
-              ),
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
             ),
             const SizedBox(height: 6),
             Text(

@@ -24,5 +24,6 @@ class RImages {
   static const String profileBackgroundImage = "assets/images/profileBackground.png";
   static const String currentLocation = "assets/icon/currentLocation.png";
   static const String location = "assets/icon/location.png";
+  static const String cabDetailsImage = "assets/icon/rodbezCar.png";
 
 }
